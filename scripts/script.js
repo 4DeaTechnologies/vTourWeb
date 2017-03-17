@@ -23,7 +23,7 @@ $(document).ready(function(){
         title.innerHTML = value.title;
         title.setAttribute("class", "text");
         var price = document.createElement("div");
-        price.innerHTML = value.price;
+        price.innerHTML = "Rs " + value.price;
         price.setAttribute("class", "text");
         var textContainer = document.createElement("div");
         textContainer.setAttribute("class", "text-container");

@@ -30,6 +30,8 @@
 .text{
     color: #ffffff;
     text-align: center;
+    font-weight: 600;
+    text-shadow: 1px 1px #000, 0 0 10px #111;
 }
 
 .active-card{

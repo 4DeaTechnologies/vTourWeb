@@ -37,7 +37,7 @@
 }
 
 .thumb-container-main{
-    width: 180px;
+    width: 130px;
     height: 100%;
     background-color: whitesmoke;
     float: left;
@@ -55,10 +55,12 @@
     background-color: #f05a28;
     margin-top: 10px;
     cursor: pointer;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
 }
 
 .iframe{
-    width: calc(100% - 400px);
+    width: calc(100% - 350px);
     height: 100%;
     float: left;
 }

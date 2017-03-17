@@ -5,19 +5,19 @@
 }
 .tabs-container{
     height: 100%;
-    width: 275px;
+    width: 220px;
     background-color: gray;
     float: left;
 }
 
 .cards-container{
     margin: 10px auto;
-    width: 200px;
+    width: 180px;
     cursor: pointer;
 }
 
 .card{
-    width: 200px;
+    width: 180px;
     height: 90px;
     margin-top: 10px;
     display: inline-block;
@@ -36,8 +36,29 @@
     border: 1px solid red;
 }
 
+.thumb-container-main{
+    width: 180px;
+    height: 100%;
+    background-color: whitesmoke;
+    float: left;
+    overflow-y: scroll;
+}
+
+.thumb-container{
+    width: 105px;
+    margin: 0 auto;
+}
+
+.thumb{
+    width: 105px;
+    height: 70px;
+    background-color: #f05a28;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
 .iframe{
-    width: calc(100% - 275px);
+    width: calc(100% - 400px);
     height: 100%;
     float: left;
 }

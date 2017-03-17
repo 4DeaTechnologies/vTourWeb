@@ -1,0 +1,49 @@
+.container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.tabs-container{
+    height: 100%;
+    width: 275px;
+    background-color: gray;
+    float: left;
+}
+
+.cards-container{
+    margin: 10px auto;
+    width: 200px;
+    cursor: pointer;
+}
+
+.card{
+    background-color: azure;
+    width: 200px;
+    height: 90px;
+    margin-top: 10px;
+    display: inline-block;
+    border: 1px solid transparent;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+
+.text{
+    color: #ffffff;
+    text-align: center;
+}
+
+.active-card{
+    border: 1px solid red;
+}
+
+.iframe{
+    width: calc(100% - 275px);
+    height: 100%;
+    float: left;
+}
+
+iframe{
+    width: 100%;
+    height: 100%;
+}
+

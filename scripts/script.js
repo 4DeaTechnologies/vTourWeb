@@ -9,10 +9,10 @@ $(document).ready(function(){
 
             if(mainData.type == 'tourData_downloaded'){
                 tourData = mainData.tourData;
-                console.log("Data", tourData);
                 tourData.scenes.map(function (data, i) {
                     var thumb = document.createElement("div");
                     thumb.setAttribute("class", "thumb");
+                    thumb.setAttribute("id", "scene"+i);
                     thumb.style.background = "linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)), url(https://s3.eu-central-1.amazonaws.com/4dea-development-commonpanos/vtour/"+tourData.ShortURL+"/images/Scene"+i+"/Thumbnail/thumb.jpg)";
                     document.querySelector(".thumb-container").appendChild(thumb);
                 })
@@ -61,7 +61,8 @@ $(document).ready(function(){
 
     (function setActiveCard() {
 
-        var activeIFrame = 1;
+        var activeIFrame = 0;
+        var activeSceneNum = 0
 
         $("#card" + activeIFrame).addClass("active-card");
 
@@ -71,14 +72,22 @@ $(document).ready(function(){
             var id = this.id.replace(/card/,'');
             activeIFrame = id;
             $("#card"+activeIFrame).addClass("active-card");
-            renderIFrame(activeIFrame);
+            renderIFrame(activeIFrame, activeSceneNum);
             renderThumbnails();
         });
-        renderIFrame(activeIFrame);
+
+        $('body').on('click','.thumb',function(){
+            var id = this.id.replace(/scene/,'');
+            console.log("This is scene num", id);
+            activeSceneNum = id;
+            renderIFrame(activeIFrame, activeSceneNum);
+        });
+
+        renderIFrame(activeIFrame, activeSceneNum);
     })();
 
-    function  renderIFrame(activeIFrame){
-        document.querySelector("iframe").src = "https://s3.eu-central-1.amazonaws.com/testingpurpose4dea/vtour/"+data[activeIFrame].shortUrl+"/hackable/index.html?v=3";
+    function  renderIFrame(activeIFrame, sceneNum){
+        document.querySelector("iframe").src = "https://s3.eu-central-1.amazonaws.com/testingpurpose4dea/vtour/"+data[activeIFrame].shortUrl+"/hackable/index.html?v=3#Scene="+sceneNum;
     };
 
     renderThumbnails();

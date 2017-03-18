@@ -70,3 +70,28 @@ iframe{
 .active-card{
     border: 1px solid red;
 }
+
+.title-container{
+    position: absolute;
+    min-width: 100px;
+    left: 360px;
+    top: 10px;
+    background: rgba(0,0,0,0.6);
+    padding-bottom: 5px;
+}
+
+.buy-now{
+    background: #f05a28;
+    color: white;
+    padding: 3px 5px;
+    cursor: pointer;
+    border-radius: 3px;
+    text-align: center;
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.tour-name{
+    padding: 5px 7px;
+    color: white;
+}

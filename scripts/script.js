@@ -1,6 +1,26 @@
 $(document).ready(function(){
-
     var tourData = {};
+
+    var analyticsfunction = function(){
+        //ga('create', 'UA-93333171-1', 'auto');
+        ga('send', 'pageview','sample');
+        console.log(ga);
+        return{
+            lastPerformance :0,
+        sendOn:function(ShortURL, Secne){
+            var NOW = performance.now();
+            ga('send',{
+                hitType:'timing',
+                timingCategory:'web_tracking_'+ShortURL,
+                timingVar:ShortURL +' - Secne' + Secne ,
+                timingValue:Number(Number(NOW) - this.lastPerformance)
+            });
+            this.lastPerformance = NOW;
+        }
+        }
+    }
+
+    var analytics = analyticsfunction();
 
     function renderThumbnails() {
         document.querySelector(".thumb-container").innerHTML = "";
@@ -27,7 +47,7 @@ $(document).ready(function(){
 
     var data = [ {
         shortUrl: "TGBHotels_Ahmedabad",
-        title: "TGB Hotels, Ahmedabad, ",
+        title: "TGB Hotels, Ahmedabad ",
         price: 6999
     },
     {
@@ -68,6 +88,8 @@ $(document).ready(function(){
         $("#card"+activeIFrame).addClass("active-card");
         $('#scene'+activeIFrame).addClass("active-card");
 
+        document.querySelector(".tour-name").innerHTML =  data[activeIFrame].title;
+
         $(".card").click(function () {
             $(".card").removeClass("active-card");
 
@@ -75,7 +97,10 @@ $(document).ready(function(){
             activeIFrame = id;
             $("#card"+activeIFrame).addClass("active-card");
             renderIFrame(activeIFrame, activeSceneNum);
+            analytics.sendOn(activeIFrame, activeSceneNum);
             renderThumbnails();
+
+            document.querySelector(".tour-name").innerHTML =  data[activeIFrame].title;
         });
 
         $('body').on('click','.thumb',function(){
@@ -86,6 +111,7 @@ $(document).ready(function(){
             activeSceneNum = id;
             $(this).addClass("active-card");
             renderIFrame(activeIFrame, activeSceneNum);
+            console.log(analytics.sendOn(activeIFrame, activeSceneNum));
         });
 
         renderIFrame(activeIFrame, activeSceneNum);

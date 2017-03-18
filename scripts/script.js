@@ -23,6 +23,7 @@ $(document).ready(function(){
             }
         });
     };
+    renderThumbnails();
 
     var data = [ {
         shortUrl: "TGBHotels_Ahmedabad",
@@ -48,7 +49,7 @@ $(document).ready(function(){
         title.innerHTML = value.title;
         title.setAttribute("class", "text");
         var price = document.createElement("div");
-        price.innerHTML = value.price;
+        price.innerHTML = "Rs "+value.price;
         price.setAttribute("class", "text");
         var textContainer = document.createElement("div");
         textContainer.setAttribute("class", "text-container");
@@ -62,9 +63,10 @@ $(document).ready(function(){
     (function setActiveCard() {
 
         var activeIFrame = 0;
-        var activeSceneNum = 0
+        var activeSceneNum = 0;
 
-        $("#card" + activeIFrame).addClass("active-card");
+        $("#card"+activeIFrame).addClass("active-card");
+        $('#scene'+activeIFrame).addClass("active-card");
 
         $(".card").click(function () {
             $(".card").removeClass("active-card");
@@ -77,9 +79,12 @@ $(document).ready(function(){
         });
 
         $('body').on('click','.thumb',function(){
+            $('.thumb').removeClass("active-card");
+
             var id = this.id.replace(/scene/,'');
             console.log("This is scene num", id);
             activeSceneNum = id;
+            $(this).addClass("active-card");
             renderIFrame(activeIFrame, activeSceneNum);
         });
 
@@ -87,8 +92,6 @@ $(document).ready(function(){
     })();
 
     function  renderIFrame(activeIFrame, sceneNum){
-        document.querySelector("iframe").src = "https://s3.eu-central-1.amazonaws.com/testingpurpose4dea/vtour/"+data[activeIFrame].shortUrl+"/hackable/index.html?v=3#Scene="+sceneNum;
+        document.querySelector("iframe").src = "https://s3.eu-central-1.amazonaws.com/testingpurpose4dea/vtour/"+data[activeIFrame].shortUrl+"/hackable/index.html?v=4#Scene="+sceneNum;
     };
-
-    renderThumbnails();
 });
